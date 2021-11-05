@@ -13,12 +13,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(screenWidth, screenHeight),
-      builder: () =>  MaterialApp(
-
+      builder: () => MaterialApp(
+        theme: ThemeData(
+          primaryColor: mainColor,
+        ),
         debugShowCheckedModeBanner: false,
         home: WelcomeScreen(),
       ),
     );
   }
 }
-

@@ -1,5 +1,6 @@
 import 'package:decorative_app_bar/decorative_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:ufs_update/screens/ask_permission_screen/ask_permission_screen.dart';
 import 'package:ufs_update/screens/graph_screen/graph_screen.dart';
 import 'package:ufs_update/screens/login_screen/login_Screen.dart';
 import 'package:ufs_update/shared/component.dart';
@@ -7,7 +8,6 @@ import 'package:ufs_update/shared/constant.dart';
 import 'package:ufs_update/shared/textStyle.dart';
 import 'package:unicons/unicons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: [
           Container(
             child: DecorativeAppBar(
-                barHeight: screenHeight.h *0.23,
+                barHeight: screenHeight.h * 0.23,
                 barPad: 140.r,
                 radii: 100.r,
                 gradient1: Colors.white,
@@ -69,7 +69,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ],
                 ),
                 Padding(
-                  padding:  EdgeInsets.symmetric(
+                  padding: EdgeInsets.symmetric(
                     horizontal: 35.h,
                   ),
                   child: DropdownButton(
@@ -97,7 +97,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     icon: UniconsLine.clock,
                     label: "Ask Permission",
                     onTap: () {
-                      print('gckv');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AskPermissionScreen(),
+                          ));
                     }),
                 myDivider(),
                 buildCommonSetting(
