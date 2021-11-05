@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ufs_update/shared/textStyle.dart';
-import 'package:unicons/unicons.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'constant.dart';
 
@@ -10,23 +10,23 @@ Widget defaultFormField({
   String label,
   bool isPassword = false,
   Function passwordShown,
-  bool isSecure = true,
+  bool isSecure =true,
   double width,
 }) {
   return Container(
-    margin: EdgeInsets.symmetric(vertical: 10),
-    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-    width: width * 0.85,
+    margin: EdgeInsets.symmetric(vertical: 10.w),
+    padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 5.w),
+    width: width.w * 0.85,
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(30),
-      color: mainColor.withOpacity(0.5),
+      borderRadius: BorderRadius.circular(15.r),
+      color: textFormColor,
     ),
     child: TextFormField(
       style: textStyle(),
       decoration: InputDecoration(
         border: InputBorder.none,
         // hintText: 'Phone number',
-        hintText: label,
+       hintText: label,
         hintStyle: textStyle(),
         labelStyle: textStyle(color: mainColor),
         focusedBorder: InputBorder.none,
@@ -35,7 +35,10 @@ Widget defaultFormField({
         //  suffixText: 'show',
         suffix: isPassword
             ? InkWell(
-                child: Text('show'),
+                child: Text('show',style: textStyle(
+                  color: mainColor,
+                  size: 15.sp,
+                ),),
                 onTap: passwordShown,
               )
             : Text(
@@ -56,18 +59,18 @@ Widget buildCommonSetting({
   String label,
 }) {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10),
+    padding:  EdgeInsets.symmetric(vertical: 10.w),
     child: InkWell(
       onTap: onTap,
       child: Row(
         children: [
           Icon(icon),
           SizedBox(
-            width: 10,
+            width: 10.w,
           ),
           Text(
             label,
-            style: textStyle(size: 18),
+            style: textStyle(size: 18.sp),
           ),
         ],
       ),

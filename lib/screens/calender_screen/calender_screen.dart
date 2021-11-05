@@ -1,11 +1,12 @@
 import 'package:decorative_app_bar/decorative_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:ufs_update/screens/daily_calender/daily_calender.dart';
 import 'package:ufs_update/shared/component.dart';
 import 'package:ufs_update/shared/constant.dart';
 import 'package:ufs_update/shared/textStyle.dart';
 import 'package:unicons/unicons.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class CalenderScreen extends StatefulWidget {
   @override
@@ -32,17 +33,17 @@ class _CalenderScreenState extends State<CalenderScreen> {
         children: [
           Container(
             child: DecorativeAppBar(
-                barHeight: 200,
-                barPad: 170,
-                radii: 100,
+                barHeight: screenHeight.h *0.23,
+                barPad: 140.r,
+                radii: 100.r,
                 gradient1: Colors.white,
                 gradient2: mainColor,
                 extra: Align(
                   alignment: AlignmentDirectional.topStart,
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.only(
-                      top: 50,
-                      start: 30,
+                    padding:  EdgeInsetsDirectional.only(
+                      top: 50.h,
+                      start: 30.w,
                     ),
                   ),
                 )),
@@ -58,68 +59,10 @@ class _CalenderScreenState extends State<CalenderScreen> {
                     style: textStyle(),
                   ),
                 ),
-                // Calendar(
-                //   initialDate: DateTime.now(),
-                //   weekendOpacityEnable: true,
-                //   previous: Container(
-                //     decoration: BoxDecoration(
-                //         borderRadius: BorderRadius.circular(500),
-                //         boxShadow: [
-                //           BoxShadow(
-                //             color: Colors.grey[300],
-                //             spreadRadius: 1.5,
-                //             blurRadius: 5,
-                //             offset: Offset(2.0, 0.0),
-                //           ),
-                //         ]),
-                //     child: CircleAvatar(
-                //       radius: 14,
-                //       backgroundColor: Colors.white,
-                //       child: Icon(
-                //         Icons.arrow_back_ios,
-                //         size: 16,
-                //         color: Colors.orange,
-                //       ),
-                //     ),
-                //   ),
-                //   next: Container(
-                //     decoration: BoxDecoration(
-                //         borderRadius: BorderRadius.circular(500),
-                //         boxShadow: [
-                //           BoxShadow(
-                //               color: Colors.grey[300],
-                //               spreadRadius: 1.5,
-                //               blurRadius: 5,
-                //               offset: Offset(2.0, 0.0))
-                //         ]),
-                //     child: CircleAvatar(
-                //       radius: 14,
-                //       backgroundColor: Colors.white,
-                //       child: Icon(
-                //         Icons.arrow_forward_ios,
-                //         size: 16,
-                //         color: Colors.orange,
-                //       ),
-                //     ),
-                //   ),
-                //   space: 20,
-                //   onSelected: (date) {
-                //     print(date);
-                //   },
-                //   backgroundColor: Colors.white,
-                //   activeColor: Colors.orange,
-                //   textStyleDays: TextStyle(
-                //       fontWeight: FontWeight.normal, color: Colors.black),
-                //   textStyleWeekDay:
-                //       TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-                //   titleStyle:
-                //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                //   selectedStyle:
-                //       TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-                // ),
+
                 TableCalendar(
                   focusedDay: focusedDay,
-                  lastDay: DateTime(2023),
+                  lastDay: DateTime(2025),
                   firstDay: DateTime(2020),
                   calendarFormat: format,
                   onFormatChanged: (CalendarFormat _format) {
@@ -170,7 +113,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
                     ),
                     todayTextStyle: textStyle(
                       color: Colors.white,
-                      size: 18,
+                      size: 18.sp,
                     ),
                     isTodayHighlighted: true,
                     selectedDecoration: BoxDecoration(
@@ -188,7 +131,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
                   },
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 15.h,
                 ),
                 if (appear)
                   Card(
@@ -215,7 +158,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
                     ),
                   ),
                 SizedBox(
-                  height: 80,
+                  height: 80.h,
                 ),
               ],
             ),

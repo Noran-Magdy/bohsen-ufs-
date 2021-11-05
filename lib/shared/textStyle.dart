@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 TextStyle textStyle({
@@ -8,7 +9,7 @@ TextStyle textStyle({
   fontFamily: family ?? "Jannah",
   fontWeight: weight?? FontWeight.w500,
   color: color ??Colors.black,
-  fontSize: size ?? 16,
+  fontSize: size ?? 16.sp,
   decoration: isDecorated ?TextDecoration.underline:TextDecoration.none
     
 );}

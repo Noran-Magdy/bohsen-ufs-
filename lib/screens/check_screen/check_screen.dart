@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:ufs_update/shared/constant.dart';
 import 'package:ufs_update/shared/textStyle.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class CheckScreen extends StatefulWidget {
   @override
@@ -19,23 +21,23 @@ class _CheckScreenState extends State<CheckScreen> {
           children: [
             Container(
               child: DecorativeAppBar(
-                  barHeight: 200,
-                  barPad: 170,
-                  radii: 100,
+                  barHeight: screenHeight.h *0.23,
+                  barPad: 140.r,
+                  radii: 100.r,
                   gradient1: Colors.white,
                   gradient2: mainColor,
                   extra: Align(
                     alignment: AlignmentDirectional.topStart,
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.only(
-                        top: 50,
-                        start: 30,
+                      padding:  EdgeInsetsDirectional.only(
+                        top: 50.h,
+                        start: 30.w,
                       ),
                     ),
                   )),
             ),
             SizedBox(
-              height: 50,
+              height: 45.h,
             ),
             Text(
               'Click  if you want to check in or out ',
@@ -46,26 +48,26 @@ class _CheckScreenState extends State<CheckScreen> {
               style: textStyle(color: Colors.grey[500]),
             ),
             SizedBox(
-              height: 80,
+              height: 65.h,
             ),
             NeumorphicButton(
               style: NeumorphicStyle(
                   shape: NeumorphicShape.convex,
                   boxShape: NeumorphicBoxShape.circle(),
-                  depth: 20,
+                  depth: 15.sp,
                   color: mainColor,
                   shadowDarkColor: Colors.black87),
               onPressed: () {
                 print("onClick");
               },
               child: Container(
-                height: 180,
+                height: 150.h,
                 child: Center(
                   child: Text(
                     'Check',
                     style: textStyle(
                       color: Colors.white,
-                      size: 24,
+                      size: 24.sp,
                     ),
                   ),
                 ),

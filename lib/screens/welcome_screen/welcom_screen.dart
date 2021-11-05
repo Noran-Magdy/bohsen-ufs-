@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ufs_update/screens/detect_language_screen/detect_language_screen.dart';
+import 'package:ufs_update/screens/login_screen/login_Screen.dart';
 import 'package:ufs_update/shared/constant.dart';
 import 'package:ufs_update/shared/textStyle.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -14,15 +16,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
-        // height: MediaQuery.of(context).size.height,
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     image: NetworkImage(
-        //       'https://i.pinimg.com/564x/cd/f8/e4/cdf8e45e45b8460d05879219fee34547.jpg',
-        //     ),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
+
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -32,20 +26,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 'Al NAJMAH  Attendance',
                 textScaleFactor: 1.5,
                 style: textStyle(
-                  size: 20,
+                  size: 20.sp,
                   weight: FontWeight.w800,
                 ),
               ),
 
               Image.asset(
                 'assets/images/ball.png',
-                height: 400,
+                height: screenHeight.h * 0.4,
                 fit: BoxFit.contain,
               ),
 
 
               SizedBox(
-                height: 50,
+                height: 50.h,
               ),
               Align(
                 alignment: AlignmentDirectional.bottomCenter,
@@ -53,22 +47,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   padding: const EdgeInsets.all(20.0),
                   child: SizedBox(
                     width: double.infinity,
-                    height: 50,
+                    height: 50.h,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => DetectLanguageScreen(),
+                              builder: (context) => LoginScreen(),
                             ));
                       },
                       child: Text(
                         'Start ',
-                        style: textStyle(color: Colors.white, size: 18),
+                        style: textStyle(color: Colors.white, size: 18.sp),
                       ),
                       style: ButtonStyle(
 
-                        elevation: MaterialStateProperty.all<double>(15),
+                        elevation: MaterialStateProperty.all<double>(15.sp),
                         shadowColor: MaterialStateProperty.all<Color>(shadowColor),
                         backgroundColor:
                             MaterialStateProperty.all<Color>(mainColor),
@@ -76,7 +70,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             MaterialStateProperty.all<Color>(Colors.white),
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24),
+                            borderRadius: BorderRadius.circular(24.sp),
                           ),
                         ),
                       ),

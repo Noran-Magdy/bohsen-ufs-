@@ -6,6 +6,8 @@ import 'package:ufs_update/shared/component.dart';
 import 'package:ufs_update/shared/constant.dart';
 import 'package:ufs_update/shared/textStyle.dart';
 import 'package:unicons/unicons.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -30,9 +32,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: [
           Container(
             child: DecorativeAppBar(
-                barHeight: 200,
-                barPad: 170,
-                radii: 100,
+                barHeight: screenHeight.h *0.23,
+                barPad: 140.r,
+                radii: 100.r,
                 gradient1: Colors.white,
                 gradient2: mainColor,
                 extra: Align(
@@ -48,7 +50,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           Expanded(
             child: ListView(
               physics: BouncingScrollPhysics(),
-              padding: EdgeInsetsDirectional.only(top: 20, start: 20),
+              padding: EdgeInsetsDirectional.only(top: 20.h, start: 20.w),
               children: [
                 Text(
                   'Common',
@@ -58,22 +60,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   children: [
                     Icon(Icons.language),
                     SizedBox(
-                      width: 10,
+                      width: 10.w,
                     ),
                     Text(
                       'Language',
-                      style: textStyle(size: 18),
+                      style: textStyle(size: 18.sp),
                     ),
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 35,
+                  padding:  EdgeInsets.symmetric(
+                    horizontal: 35.h,
                   ),
                   child: DropdownButton(
                     dropdownColor: Colors.white,
                     style: textStyle(),
-                    iconSize: 24,
+                    iconSize: 24.sp,
                     value: langValue,
                     icon: Icon(Icons.keyboard_arrow_down_rounded),
                     isExpanded: true,
@@ -131,7 +133,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     }),
                 myDivider(),
                 SizedBox(
-                  height: 12,
+                  height: 12.h,
                 ),
                 Text(
                   'Account',
@@ -150,14 +152,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     onTap: () {}),
                 myDivider(),
                 buildCommonSetting(
-                    icon: UniconsLine.signout, label: "Sign out", onTap: () {
-                  Navigator.pushAndRemoveUntil(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen(),), (
-                          route) => false);
-                }),
+                    icon: UniconsLine.signout,
+                    label: "Sign out",
+                    onTap: () {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                          (route) => false);
+                    }),
                 myDivider(),
                 SizedBox(
-                  height: 80,
+                  height: 80.h,
                 ),
               ],
             ),

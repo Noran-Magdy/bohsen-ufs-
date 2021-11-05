@@ -5,6 +5,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:ufs_update/shared/constant.dart';
 import 'package:ufs_update/shared/textStyle.dart';
 import 'package:unicons/unicons.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyGraphScreen extends StatefulWidget {
   @override
@@ -43,7 +44,7 @@ class _MyGraphScreenState extends State<MyGraphScreen> {
         elevation: 0,
         leading: IconButton(
           icon: Icon(UniconsLine.arrow_left,),
-          iconSize: 28,
+          iconSize: 28.sp,
           color: Colors.black,
           onPressed: () {
             Navigator.pop(context);
