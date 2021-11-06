@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ufs_update/screens/ask_permission_screen/ask_permission_screen.dart';
 import 'package:ufs_update/screens/graph_screen/graph_screen.dart';
 import 'package:ufs_update/screens/login_screen/login_Screen.dart';
+import 'package:ufs_update/screens/vacation_request_screen/vacatoin_request_screen.dart';
 import 'package:ufs_update/shared/component.dart';
 import 'package:ufs_update/shared/constant.dart';
 import 'package:ufs_update/shared/textStyle.dart';
@@ -108,7 +109,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     icon: UniconsLine.vuejs_alt,
                     label: "Vacation Request",
                     onTap: () {
-                      print('gckv');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => VacationRequestScreen(),
+                          ));
                     }),
                 myDivider(),
                 buildCommonSetting(

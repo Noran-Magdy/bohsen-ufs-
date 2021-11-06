@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:table_calendar/table_calendar.dart';
 import 'package:ufs_update/shared/textStyle.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -117,5 +118,40 @@ Widget buildAccountSetting({
 Widget myDivider(){
   return   Divider(
     color: Colors.grey[300],
+  );
+}
+
+
+Widget buildFormFiledRequest({
+  context,
+  Widget  buildInkWell,
+  TextEditingController controller,
+}){
+  return     InkWell(
+    onTap: () {
+      showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.white,
+        builder: (context) {
+          return StatefulBuilder(
+            builder: (BuildContext context,
+                void Function(void Function()) setState) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                 buildInkWell,
+                ],
+              );
+            },
+          );
+        },
+      );
+    },
+    child: TextFormField(
+      style: textStyle(),
+      cursorColor: mainColor,
+      controller: controller,
+      enabled: false,
+    ),
   );
 }
