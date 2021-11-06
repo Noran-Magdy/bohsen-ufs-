@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ufs_update/screens/home_screen/home_screen.dart';
+import 'package:ufs_update/screens/pin_code_screen/pin_code_screen.dart';
 import 'package:ufs_update/shared/component.dart';
 import 'package:ufs_update/shared/constant.dart';
 import 'package:ufs_update/shared/textStyle.dart';
@@ -87,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => HomeScreen(),
+                                  builder: (context) => PinCodeScreen(),
                                 ),
                                 (route) => false);
                           },

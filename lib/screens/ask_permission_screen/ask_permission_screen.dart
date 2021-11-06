@@ -92,7 +92,7 @@ bool isValidate = false;
                       ),
 
                       buildFormFiledRequest(
-                        controller: fromTimeController,
+                        controller: dayController,
                         context: context,
                         buildInkWell:    TableCalendar(
                           focusedDay: focusedDay,

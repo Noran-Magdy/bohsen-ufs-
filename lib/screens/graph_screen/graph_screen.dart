@@ -21,14 +21,14 @@ class _MyGraphScreenState extends State<MyGraphScreen> {
 
   @override
   void initState() {
-    days = List.generate(31, (index) => index + 1);
+    days = List.generate(10, (index) => index + 1);
     bohsen = List.generate(
-        31,
+        10,
         (index) =>
             SalesData({index + 1}.toString(), Random().nextInt(24).toDouble()));
 
     bohsen2 = List.generate(
-        31,
+        10,
         (index) =>
             SalesData({index + 1}.toString(), Random().nextInt(24).toDouble()));
 
@@ -62,31 +62,53 @@ class _MyGraphScreenState extends State<MyGraphScreen> {
           legend: Legend(isVisible: true),
           // Enable tooltip\
           tooltipBehavior: _tooltipBehavior,
-          series: <CartesianSeries>[
-            ColumnSeries<SalesData, String>(
-                dataSource: bohsen,
-                xValueMapper: (SalesData sales, _) => sales.year,
-                yValueMapper: (SalesData sales, _) => sales.sales,
-                // Enable data label
-                name: 'Bohsen',
-                color: mainColor,
-                xAxisName: 'Days',
-                yAxisName: 'Hours',
-                isVisibleInLegend: true,
-                isVisible: true,
-                dataLabelSettings: DataLabelSettings(isVisible: true)),
-            ColumnSeries<SalesData, String>(
+          series: <ChartSeries>[
+            // ColumnSeries<SalesData, String>(
+            //     dataSource: bohsen,
+            //     xValueMapper: (SalesData sales, _) => sales.year,
+            //     yValueMapper: (SalesData sales, _) => sales.sales,
+            //     // Enable data label
+            //     name: 'Bohsen',
+            //     color: mainColor,
+            //     xAxisName: 'Days',
+            //     yAxisName: 'Hours',
+            //     isVisibleInLegend: true,
+            //     isVisible: true,
+            //     dataLabelSettings: DataLabelSettings(isVisible: true)),
+            // ColumnSeries<SalesData, String>(
+            //     dataSource: bohsen2,
+            //     xValueMapper: (SalesData sales, _) => sales.year,
+            //     yValueMapper: (SalesData sales, _) => sales.sales,
+            //     // Enable data label
+            //     name: 'Bohsen',
+            //     color: Colors.purple,
+            //     xAxisName: 'Days',
+            //     yAxisName: 'Hours',
+            //     isVisibleInLegend: true,
+            //     isVisible: true,
+            //     dataLabelSettings: DataLabelSettings(isVisible: true)),
+            StackedColumn100Series<SalesData, String>(
+              dataSource: bohsen,
+
+              xValueMapper: (SalesData sales, _) => sales.year,
+              yValueMapper: (SalesData sales, _) => sales.sales,
+              width: 0.8, // Width of the columns
+              spacing: 0.2 ,   // pacing between the columns
+              color: mainColor,
+              borderRadius: BorderRadius.circular(5),
+              borderWidth: 2,
+            ),
+            StackedColumn100Series<SalesData, String>(
                 dataSource: bohsen2,
                 xValueMapper: (SalesData sales, _) => sales.year,
                 yValueMapper: (SalesData sales, _) => sales.sales,
-                // Enable data label
-                name: 'Bohsen',
-                color: Colors.purple,
-                xAxisName: 'Days',
-                yAxisName: 'Hours',
-                isVisibleInLegend: true,
-                isVisible: true,
-                dataLabelSettings: DataLabelSettings(isVisible: true)),
+                width: 0.8, // Width of the columns
+                spacing: 0.2, // Spacing between the columns
+                color: Colors.grey[300],
+                borderColor: Colors.white,
+                borderRadius: BorderRadius.circular(5),
+                borderWidth: 2
+            ),
           ]),
     );
   }
