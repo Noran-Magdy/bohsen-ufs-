@@ -32,9 +32,9 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
-                'assets/images/loginback.jpeg',
+                'assets/images/ball3.jpeg',
               ),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
           child: Align(

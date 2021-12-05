@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       builder: () => MaterialApp(
         theme: ThemeData(
           primaryColor: mainColor,
+         primarySwatch: myGreen,
         ),
         debugShowCheckedModeBanner: false,
         home: WelcomeScreen(),

@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:ufs_update/shared/constant.dart';
-import 'package:ufs_update/shared/textStyle.dart';
 import 'package:unicons/unicons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,12 +17,13 @@ class _MyGraphScreenState extends State<MyGraphScreen> {
   int index = 1;
   List<SalesData> bohsen = [];
   List<SalesData> bohsen2 = [];
+  ZoomPanBehavior _zoomPanBehavior;
 
   @override
   void initState() {
     days = List.generate(10, (index) => index + 1);
     bohsen = List.generate(
-        10,
+        31,
         (index) =>
             SalesData({index + 1}.toString(), Random().nextInt(24).toDouble()));
 
@@ -31,10 +31,15 @@ class _MyGraphScreenState extends State<MyGraphScreen> {
         10,
         (index) =>
             SalesData({index + 1}.toString(), Random().nextInt(24).toDouble()));
-
+_zoomPanBehavior = ZoomPanBehavior(
+  enablePinching: true,
+  enableDoubleTapZooming: true,
+ enableMouseWheelZooming: true,
+  enablePanning: true,
+  zoomMode: ZoomMode.x,
+);
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,65 +56,26 @@ class _MyGraphScreenState extends State<MyGraphScreen> {
           },
         ),
       ),
-      body: SfCartesianChart(
-          primaryXAxis: CategoryAxis(),
-          // Chart title
-          title: ChartTitle(
-            text: 'Monthly work hours analysis',
-            textStyle: textStyle(),
-          ),
-          // Enable legend
-          legend: Legend(isVisible: true),
-          // Enable tooltip\
-          tooltipBehavior: _tooltipBehavior,
-          series: <ChartSeries>[
-            // ColumnSeries<SalesData, String>(
-            //     dataSource: bohsen,
-            //     xValueMapper: (SalesData sales, _) => sales.year,
-            //     yValueMapper: (SalesData sales, _) => sales.sales,
-            //     // Enable data label
-            //     name: 'Bohsen',
-            //     color: mainColor,
-            //     xAxisName: 'Days',
-            //     yAxisName: 'Hours',
-            //     isVisibleInLegend: true,
-            //     isVisible: true,
-            //     dataLabelSettings: DataLabelSettings(isVisible: true)),
-            // ColumnSeries<SalesData, String>(
-            //     dataSource: bohsen2,
-            //     xValueMapper: (SalesData sales, _) => sales.year,
-            //     yValueMapper: (SalesData sales, _) => sales.sales,
-            //     // Enable data label
-            //     name: 'Bohsen',
-            //     color: Colors.purple,
-            //     xAxisName: 'Days',
-            //     yAxisName: 'Hours',
-            //     isVisibleInLegend: true,
-            //     isVisible: true,
-            //     dataLabelSettings: DataLabelSettings(isVisible: true)),
-            StackedColumn100Series<SalesData, String>(
-              dataSource: bohsen,
-
+      body:  SfCartesianChart(
+        primaryXAxis: CategoryAxis(),
+        zoomPanBehavior: _zoomPanBehavior,
+        // Chart title
+        title: ChartTitle(text:  'Monthly work hours analysis'),
+        // Enable legend
+        legend: Legend(isVisible: true),
+        // Enable tooltip
+        tooltipBehavior: _tooltipBehavior,
+        series: <LineSeries<SalesData, String>>[
+          LineSeries<SalesData, String>(
+              dataSource:  bohsen,
               xValueMapper: (SalesData sales, _) => sales.year,
               yValueMapper: (SalesData sales, _) => sales.sales,
-              width: 0.8, // Width of the columns
-              spacing: 0.2 ,   // pacing between the columns
+              // Enable data label
               color: mainColor,
-              borderRadius: BorderRadius.circular(5),
-              borderWidth: 2,
-            ),
-            StackedColumn100Series<SalesData, String>(
-                dataSource: bohsen2,
-                xValueMapper: (SalesData sales, _) => sales.year,
-                yValueMapper: (SalesData sales, _) => sales.sales,
-                width: 0.8, // Width of the columns
-                spacing: 0.2, // Spacing between the columns
-                color: Colors.grey[300],
-                borderColor: Colors.white,
-                borderRadius: BorderRadius.circular(5),
-                borderWidth: 2
-            ),
-          ]),
+              dataLabelSettings: DataLabelSettings(isVisible: true)
+          ),
+        ],
+      ),
     );
   }
 }
